@@ -23,3 +23,12 @@ Live streaming platforms require real-time intelligence to understand viewer beh
 - **ui/** - Real-time dashboard components and streaming analytics interface
 - **models/** - Machine learning models for viewer behavior prediction (saved as pickle/joblib files)
 - **features/** - Feature engineering pipelines for streaming data and viewer segmentation
+
+## Getting Started
+To set up the environment and install dependencies, run:
+
+```bash
+./initialisation.sh
+```
+
+This will check your Python version, create and activate a virtual environment, and install all required packages.
