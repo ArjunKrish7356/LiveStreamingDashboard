@@ -32,3 +32,11 @@ To set up the environment and install dependencies, run:
 ```
 
 This will check your Python version, create and activate a virtual environment, and install all required packages.
+
+## Running the Dashboard Frontend
+
+To start the dashboard UI, run:
+
+```bash
+streamlit run ui/main.py
+```
