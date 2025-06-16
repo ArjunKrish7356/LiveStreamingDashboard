@@ -41,7 +41,7 @@ def find_user_churn_reason(user_id, today, interactions_df, users_df, svm, label
         'preferred_genres', 'subscription_type'
     ])
 
-    # ✅ FIX: pass DataFrame directly instead of reshaped NumPy array
+    
     prediction = svm.predict(user_values)[0]
 
     # Return decoded label if it exists in encoder
