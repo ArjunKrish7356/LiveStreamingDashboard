@@ -1,11 +1,25 @@
-import pandas as pd
+from typing import Any, List, Tuple
 from datetime import datetime, timedelta
+import pandas as pd
 
-def find_all_user_churn_reason(today, event_df, user_df, model):
+def total_and_categorial_churn(event_df, users_df, model) -> Tuple[float, List[Tuple[int, str]]]:
+    """
+    A function that return total churn percentage from total no of people and also a list containing no
+    people in risk of churn in each category
+
+    Args:
+        event_df: pandas object containing interactions data
+        user_df: pandas object containing users data
+        model: A pre-trained model (e.g., SVM) for churn prediction
+
+    Result:
+        percentage of people in risk of churn from total people ( between 0 and 1)
+        list[(userid, reason)]
+    """
+
+    today = datetime(2025, 6, 6)
     seven_days_ago = today - timedelta(days=7)
-
     event_df["login_time"] = pd.to_datetime(event_df["login_time"])
-
     last_week_df = event_df[event_df["login_time"] >= seven_days_ago]
 
     agg_df = last_week_df.groupby("user_id").agg(
@@ -18,11 +32,10 @@ def find_all_user_churn_reason(today, event_df, user_df, model):
         genre_diversity_7d=("genres_watched", lambda x: len(set(g for sublist in x for g in eval(sublist))))
     ).reset_index()
 
-
     last_session_df = event_df.groupby("user_id")["login_time"].max().reset_index()
     last_session_df["days_since_last_session"] = (today - last_session_df["login_time"]).dt.days
 
-    features_df = user_df.merge(agg_df, on="user_id", how="left")
+    features_df = users_df.merge(agg_df, on="user_id", how="left")
     features_df = features_df.merge(last_session_df[["user_id", "days_since_last_session"]], on="user_id", how="left")
 
     features_df.fillna({
@@ -38,13 +51,22 @@ def find_all_user_churn_reason(today, event_df, user_df, model):
 
     user_values = features_df
     user_values = user_values.drop(columns=['user_id','email','country','registration_date','preferred_genres','subscription_type'])
-    hashmap = {
-        0: 'bad_recommendation', 
-        1: 'genre_fatigue',
-        2: 'low_engagement', 
-        3: 'no_churn', 
-        4: 'poor_user_experience'
-    }
+    predictions = model.predict(user_values)
 
-    predictions = model.predict(user_values.values)
-    return [hashmap[pred] for pred in predictions]
+    # Calculate total churn percentage and list of (user_id, churn_reason)
+    churned_users = []
+    churn_count = 0
+
+    for idx, prediction in enumerate(predictions):
+        if prediction != 'no_churn':
+            user_id = features_df.iloc[idx]["user_id"]
+            churned_users.append((user_id, prediction))
+            churn_count += 1
+
+    churn_percentage = churn_count / len(features_df) if len(features_df) > 0 else 0.0
+
+    return churn_percentage, churned_users
+
+    
+
+

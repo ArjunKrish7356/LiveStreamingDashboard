@@ -1,2 +1,9 @@
 # add venv to gitignore
 venv/
+
+# add pycache
+__pycache__/
+
+# add .DS_Store
+
+.DS_Store
