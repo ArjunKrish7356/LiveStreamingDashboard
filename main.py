@@ -4,13 +4,16 @@ import pickle
 
 from ui.churnpage import churnpage
 from ui.page2 import page2
-
+from sqlalchemy import create_engine
 @st.cache_data
 def load_data():
+    engine = create_engine("mysql+pymysql://root:@localhost/aiotrix")
+
     """Load and cache the datasets"""
-    shows_df = pd.read_csv('data/shows.csv')
-    events_df = pd.read_csv('data/user_sessions_dataset.csv')
-    users_df = pd.read_csv('data/users.csv')
+    shows_df = pd.read_sql("SELECT * FROM shows", engine)
+    events_df = pd.read_sql("SELECT * FROM user_sessions_dataset", engine)
+    users_df = pd.read_sql("SELECT * FROM users", engine)
+
     with open('models/svm_model_for_churn_v2.pkl', 'rb') as f:
         model = pickle.load(f)
     return shows_df, events_df, users_df, model

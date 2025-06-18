@@ -15,12 +15,7 @@ def get_top_watched_shows_last_week(event_df, shows_df) -> List[str]:
     Returns:
         list: Top watched shows in descending order (most watched at index 0).
     """
-    engine = create_engine("mysql+pymysql://root:@localhost/Aiotrix")
-    shows_df = pd.read_sql("SELECT * FROM shows", engine)
-    event_df = pd.read_sql("SELECT * FROM user_sessions_dataset", engine)
-    print("shows_df shape:", shows_df.shape)
-    print("event_df shape:", event_df.shape)
-
+    #
     # Convert login_time to datetime objects
     event_df['login_time'] = pd.to_datetime(event_df['login_time'])
 
