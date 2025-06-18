@@ -38,5 +38,5 @@ This will check your Python version, create and activate a virtual environment, 
 To start the dashboard UI, run:
 
 ```bash
-streamlit run ui/main.py
+streamlit run main.py
 ```

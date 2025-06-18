@@ -1,8 +1,9 @@
 from typing import Any, List, Tuple
 from datetime import datetime, timedelta
 import pandas as pd
+from sqlalchemy import create_engine
 
-def total_and_categorial_churn(event_df, users_df, model) -> Tuple[float, List[Tuple[int, str]]]:
+def total_and_categorial_churn(model) -> Tuple[float, List[Tuple[int, str]]]:
     """
     A function that return total churn percentage from total no of people and also a list containing no
     people in risk of churn in each category
@@ -16,6 +17,9 @@ def total_and_categorial_churn(event_df, users_df, model) -> Tuple[float, List[T
         percentage of people in risk of churn from total people ( between 0 and 1)
         list[(userid, reason)]
     """
+    engine = create_engine("mysql+pymysql://root:@localhost/Aiotrix")
+    users_df = pd.read_sql("SELECT * FROM users", engine)
+    event_df = pd.read_sql("SELECT * FROM user_sessions_dataset", engine)
 
     today = datetime(2025, 6, 6)
     seven_days_ago = today - timedelta(days=7)

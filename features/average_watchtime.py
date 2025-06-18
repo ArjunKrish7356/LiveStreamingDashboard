@@ -1,8 +1,9 @@
 import pandas as pd
 from datetime import datetime, timedelta
 from typing import List
+from sqlalchemy import create_engine
 
-def average_watchtime_for_7_days(event_df) -> List[float]:
+def average_watchtime_for_7_days() -> List[float]:
     """
     Returns a list containing the average watch time for each of the past 7 days.
 
@@ -12,6 +13,10 @@ def average_watchtime_for_7_days(event_df) -> List[float]:
     Returns:
         List of average watch times for each of the last 7 days (index 0 = 6 days ago, index 6 = today)
     """
+
+    engine = create_engine("mysql+pymysql://root:@localhost/Aiotrix")
+    event_df = pd.read_sql("SELECT * FROM user_sessions_dataset", engine)
+
     event_df["login_time"] = pd.to_datetime(event_df["login_time"])
     today = event_df["login_time"].max().date()
     averages = []

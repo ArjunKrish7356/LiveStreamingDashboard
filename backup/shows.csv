@@ -1,0 +1,51 @@
+show_id,show_name,genre,duration,released_date,ratings
+s000,Breaking Point,Comedy,44,13-10-2022,1.1
+s001,Stranger Files,Action,61,25-04-2021,1.9
+s002,Galaxy Wars,Comedy,43,08-03-2021,3.7
+s003,Love & Lies,Thriller,41,11-09-2020,3.4
+s004,The Hunt,Drama,33,28-09-2024,1.4
+s005,Echoes,Sci-Fi,94,18-02-2022,3.4
+s006,Silent City,Thriller,55,29-01-2025,3.9
+s007,Last Stand,Comedy,99,23-10-2022,2.7
+s008,Quantum Leap,Romance,105,20-10-2021,2.1
+s009,Crimson Tide,Horror,30,22-10-2022,4.0
+s010,Mind Game,Sci-Fi,119,22-04-2023,2.7
+s011,Aftermath,Action,49,07-04-2021,1.9
+s012,Dark Skies,Horror,73,10-09-2022,1.4
+s013,Parallel,Romance,42,02-01-2025,2.4
+s014,Dead Zone,Action,107,20-02-2025,2.1
+s015,Time Warp,Drama,88,09-07-2023,3.1
+s016,Frostbite,Romance,40,13-01-2021,3.2
+s017,Alpha,Horror,110,27-11-2022,3.5
+s018,Oblivion,Horror,76,05-09-2023,3.3
+s019,Noir,Comedy,38,19-07-2023,1.2
+s020,Eternal,Sci-Fi,67,23-03-2022,4.9
+s021,The Loop,Horror,59,18-01-2021,4.5
+s022,Neon Nights,Romance,65,26-12-2024,2.8
+s023,The Tower,Horror,76,17-05-2024,1.7
+s024,Code Red,Action,56,07-03-2025,3.7
+s025,Missing Link,Comedy,117,01-12-2020,3.6
+s026,The Veil,Thriller,111,16-02-2023,1.7
+s027,Nightfall,Comedy,61,28-03-2022,1.7
+s028,Pulse,Romance,64,02-04-2022,5.0
+s029,Fragments,Comedy,118,06-05-2024,3.2
+s030,Enigma,Comedy,71,17-07-2022,4.4
+s031,Drift,Horror,37,05-09-2022,1.9
+s032,The Pact,Drama,70,28-05-2025,2.6
+s033,Cursed,Drama,57,14-08-2021,4.7
+s034,Truth Be Told,Thriller,70,04-11-2020,1.9
+s035,Rewind,Romance,80,21-10-2021,4.5
+s036,Prime Suspect,Comedy,88,25-12-2020,1.6
+s037,The Island,Sci-Fi,61,04-06-2024,4.0
+s038,Echo Chamber,Thriller,63,16-07-2020,4.0
+s039,Blacklist,Romance,104,04-01-2025,2.6
+s040,Domino,Sci-Fi,47,03-05-2023,3.0
+s041,Control,Drama,36,15-10-2021,4.4
+s042,The Ark,Sci-Fi,110,07-09-2022,1.6
+s043,Monarch,Comedy,84,05-10-2024,3.4
+s044,Hollow,Romance,78,05-10-2024,3.4
+s045,The Grid,Romance,97,16-08-2023,2.0
+s046,Mirage,Thriller,31,14-12-2024,3.7
+s047,Final Hour,Drama,117,07-08-2024,4.5
+s048,The Cure,Horror,64,22-01-2023,4.1
+s049,Reckoning,Action,44,08-04-2025,2.2
