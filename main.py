@@ -3,7 +3,7 @@ import pandas as pd
 import pickle
 
 from ui.churnpage import churnpage
-from ui.page2 import page2
+from ui.activitypage import activitypage
 
 @st.cache_data
 def load_data():
@@ -20,12 +20,17 @@ def main():
     # Load cached data
     shows_df, events_df, users_df, model= load_data()
     
-    churn_page = st.Page(churnpage(events_df, users_df, model), title='Churn Stats')
-    page23 = st.Page(page2, title='page2')
+    def churn_wrapper():
+        return churnpage(events_df, users_df, model)
+    
+    def activity_wrapper():
+        return activitypage(events_df, shows_df)
+    
+    churn_page = st.Page(churn_wrapper, title='Churn Stats', url_path='churn')
+    activity_page = st.Page(activity_wrapper, title='User Activity', url_path='activity')
 
-    pg = st.navigation([churn_page, page23])
-    st.sidebar.markdown("# Main page 🎈")
+    pg = st.navigation([churn_page, activity_page])
     pg.run()
-
+    
 if __name__ == '__main__':
     main()
