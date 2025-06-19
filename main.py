@@ -5,7 +5,7 @@ import os
 from sqlalchemy import create_engine
 
 from ui.churnpage import churnpage
-from ui.activitypage import activitypage  # renamed page2 -> activitypage
+from ui.activitypage import activitypage
 
 @st.cache_data
 def load_data():
@@ -23,21 +23,11 @@ def load_data():
     return shows_df, events_df, users_df, model
 
 def main():
-    """Main application function"""
     shows_df, events_df, users_df, model = load_data()
 
-    # Wrappers for consistent page loading
-    def churn_wrapper():
-        return churnpage(events_df, users_df, model)
+    churn_page = st.Page(lambda: churnpage(events_df, users_df, model), title='Churn Stats', url_path='churn')
+    activity_page = st.Page(lambda: activitypage(events_df, shows_df, users_df, model), title='User Activity', url_path='activity')
 
-    def activity_wrapper():
-        return activitypage(events_df, users_df, shows_df, model)
-
-    # Define Streamlit navigation pages
-    churn_page = st.Page(churn_wrapper, title='Churn Stats', url_path='churn')
-    activity_page = st.Page(activity_wrapper, title='User Activity', url_path='activity')
-
-    # Navigation rendering
     pg = st.navigation([churn_page, activity_page])
     pg.run()
 

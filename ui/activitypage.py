@@ -1,32 +1,28 @@
 import streamlit as st
+import plotly.graph_objects as go
 import pandas as pd
 import io
 import base64
-import plotly.graph_objects as go
-from features.Corelation import generate_model_input_features, get_correlation_heatmap
+
 from features.show_time import predicted_hourly_user_activity
 from features.average_watchtime import average_watchtime_for_7_days
 from features.top_shows import get_top_watched_shows_last_week
+from features.Corelation import generate_model_input_features, get_correlation_heatmap
 
-def activitypage(event_df: pd.DataFrame, users_df: pd.DataFrame, shows_df: pd.DataFrame, model):
+def activitypage(events_df, shows_df, users_df, model):
     st.set_page_config(layout="wide")
-    st.title("📊 User Activity & Churn Analysis Dashboard")
+    st.title("📈 User Activity Dashboard")
 
-    # === Top Row with Hourly Activity & Average Watchtime ===
+    # Top graphs
     top_left, top_right = st.columns(2)
 
     with top_left:
-        st.subheader("Predicted Hourly User Activity")
-        hourly_data = predicted_hourly_user_activity(event_df)
-
-        fig1 = go.Figure(data=[
-            go.Bar(
-                x=list(range(1, 25)),
-                y=hourly_data,
-                marker_color='green'
-            )
+        hourly_data = predicted_hourly_user_activity(events_df)
+        fig1 = go.Figure([
+            go.Bar(x=list(range(1, 25)), y=hourly_data, marker_color='green')
         ])
         fig1.update_layout(
+            title="Predicted Hourly User Activity",
             xaxis_title="Hour of Day",
             yaxis_title="Number of Users",
             xaxis=dict(tickmode='linear', dtick=1),
@@ -35,9 +31,8 @@ def activitypage(event_df: pd.DataFrame, users_df: pd.DataFrame, shows_df: pd.Da
         st.plotly_chart(fig1, use_container_width=True)
 
     with top_right:
-        st.subheader("7-Day Average Watchtime")
-        watchtime_data = average_watchtime_for_7_days(event_df)
-        fig2 = go.Figure(data=[
+        watchtime_data = average_watchtime_for_7_days(events_df)
+        fig2 = go.Figure([
             go.Scatter(
                 x=[item[0] for item in watchtime_data],
                 y=[item[1] for item in watchtime_data],
@@ -46,16 +41,17 @@ def activitypage(event_df: pd.DataFrame, users_df: pd.DataFrame, shows_df: pd.Da
             )
         ])
         fig2.update_layout(
+            title="7-Day Average Watchtime",
             xaxis_title="Date",
             yaxis_title="Time (minutes)",
             showlegend=False
         )
         st.plotly_chart(fig2, use_container_width=True)
 
-    # === Middle Row: Churn Correlation Heatmap ===
-    st.subheader("Correlation Heatmap with Churn")
+    # Correlation heatmap
+    st.subheader("🔍 Correlation with Churn")
     with st.spinner("Generating churn heatmap..."):
-        df = generate_model_input_features(event_df, users_df)
+        df = generate_model_input_features(events_df, users_df)
         model_input = df.drop(columns=[
             'user_id', 'email', 'country', 'registration_date',
             'preferred_genres', 'subscription_type'
@@ -68,13 +64,10 @@ def activitypage(event_df: pd.DataFrame, users_df: pd.DataFrame, shows_df: pd.Da
         base64_img = get_correlation_heatmap(df, columns_to_plot)
         st.image(io.BytesIO(base64.b64decode(base64_img)), use_column_width=True)
 
-    # === Bottom Row: Top Watched Shows Table ===
-    st.subheader("Top Watched Shows")
+    # Top shows table
+    st.subheader("🎬 Top Watched Shows")
     col1, col2, col3 = st.columns([0.1, 0.8, 0.1])
     with col2:
-        top_shows = get_top_watched_shows_last_week(event_df, shows_df)
-        table_data = [
-            {"Show Name": show[0], "Genres": ", ".join(show[1])}
-            for show in top_shows
-        ]
-        st.dataframe(table_data, use_container_width=True)
+        top_shows = get_top_watched_shows_last_week(events_df, shows_df)
+        show_data = [{"Show Name": show[0], "Genres": ", ".join(show[1])} for show in top_shows]
+        st.dataframe(show_data, use_container_width=True)
