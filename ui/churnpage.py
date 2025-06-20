@@ -5,7 +5,7 @@ import pandas as pd
 
 from features.churn import total_and_categorial_churn
 
-def churnpage(event_df, users_df, model):
+def churnpage(event_df, users_df, churn_model, churn_reason_model):
     """
     This is a streamlit page. The background color should be white and the default color of text should be black.
     The components in this page are
@@ -61,7 +61,7 @@ def churnpage(event_df, users_df, model):
     col1, col2 = st.columns([1, 1], gap="medium")
 
     # using calculate churn function from features find the churn stats
-    total_churn_percent, user_data = total_and_categorial_churn(event_df, users_df, model)
+    total_churn_percent, user_data = total_and_categorial_churn(event_df, users_df, churn_model, churn_reason_model)
     each_type_of_user = {}
     for user_id, reason in user_data:
         if reason not in each_type_of_user:
@@ -70,10 +70,16 @@ def churnpage(event_df, users_df, model):
             each_type_of_user[reason] += 1
  
     # The data will be used by the bar chart (top right).
-    category_data = {
-        'Category': [key for key in each_type_of_user.keys()],
-        'Percentage': [val*100/len(user_data) for val in each_type_of_user.values()]
-    }
+    if len(user_data) > 0:
+        category_data = {
+            'Category': [key for key in each_type_of_user.keys()],
+            'Percentage': [val*100/len(user_data) for val in each_type_of_user.values()]
+        }
+    else:
+        category_data = {
+            'Category': ['No Risk Users'],
+            'Percentage': [100]
+        }
 
    # Data for the table at bottom. The keys ('User ID, Reason..etc) are column names
     mock_users_data = {
@@ -120,11 +126,14 @@ def churnpage(event_df, users_df, model):
         st.markdown('<h3 style="color: black;">Risk Category Distribution</h3>', unsafe_allow_html=True)
         
         # Create vertical bar chart
+        import pandas as pd
+        df_category = pd.DataFrame(category_data)
         fig_bar = px.bar(
-            x=category_data['Category'],
-            y=category_data['Percentage'],
-            labels={'x': 'Risk Category', 'y': 'Percentage (%)'},
-            color=category_data['Category'],
+            df_category,
+            x='Category',
+            y='Percentage',
+            labels={'Category': 'Risk Category', 'Percentage': 'Percentage (%)'},
+            color='Category',
             color_discrete_sequence=['#51cf66', '#ffd43b', '#ff8787', '#ff6b6b']
         )
         

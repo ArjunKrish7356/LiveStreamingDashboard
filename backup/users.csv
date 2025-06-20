@@ -1,0 +1,101 @@
+user_id,email,age,country,registration_date,preferred_genres,subscription_type
+u000,johnsonjoshua@example.org,56,India,2024-08-01,['Comedy'],premium
+u001,rhodespatricia@example.org,31,USA,2025-01-13,['Comedy'],free
+u002,johnsonjeffery@example.net,59,UK,2025-01-17,"['Drama', 'Thriller', 'Romance']",free
+u003,jennifermiles@example.com,17,India,2024-08-30,['Sci-Fi'],free
+u004,lisa02@example.net,51,USA,2024-11-12,"['Comedy', 'Horror', 'Thriller']",premium
+u005,eric51@example.org,30,Brazil,2024-10-28,"['Action', 'Drama', 'Sci-Fi']",premium
+u006,melanie94@example.org,37,Germany,2025-03-05,['Sci-Fi'],premium
+u007,dudleynicholas@example.net,22,India,2024-09-26,"['Drama', 'Action']",premium
+u008,barbara10@example.net,54,Germany,2024-09-02,['Comedy'],premium
+u009,tracie31@example.com,50,India,2024-09-20,"['Drama', 'Thriller']",premium
+u010,francisco53@example.net,69,UK,2024-09-16,"['Horror', 'Action', 'Thriller']",free
+u011,lynchgeorge@example.net,61,India,2024-09-08,['Comedy'],free
+u012,ogray@example.net,65,Germany,2024-12-31,['Horror'],free
+u013,megan03@example.org,22,Brazil,2025-04-01,"['Romance', 'Comedy']",premium
+u014,nadams@example.net,26,Germany,2025-04-27,"['Sci-Fi', 'Comedy']",premium
+u015,jason76@example.net,60,UK,2024-11-25,"['Drama', 'Thriller', 'Sci-Fi']",free
+u016,donald88@example.com,26,Brazil,2025-03-11,"['Action', 'Comedy']",free
+u017,zhurst@example.com,59,Germany,2024-08-30,['Sci-Fi'],free
+u018,williamdavis@example.org,67,Germany,2025-04-22,"['Action', 'Drama']",free
+u019,courtneyconner@example.com,52,UK,2025-01-15,"['Sci-Fi', 'Comedy']",premium
+u020,djames@example.net,41,UK,2024-09-11,"['Sci-Fi', 'Action']",free
+u021,frazierdanny@example.net,31,UK,2025-03-12,"['Thriller', 'Action', 'Horror']",premium
+u022,daniel62@example.com,53,Brazil,2024-06-12,"['Sci-Fi', 'Horror']",premium
+u023,teresa28@example.org,21,Canada,2025-04-25,['Horror'],free
+u024,meagan89@example.org,25,UK,2024-08-05,['Horror'],premium
+u025,amberosborne@example.net,54,India,2025-05-13,"['Romance', 'Thriller']",premium
+u026,tracy15@example.com,49,Germany,2024-09-06,"['Horror', 'Drama', 'Comedy']",premium
+u027,nataliearroyo@example.org,65,UK,2025-03-05,"['Drama', 'Action']",premium
+u028,spenceamanda@example.org,26,Brazil,2024-07-27,['Comedy'],premium
+u029,karroyo@example.com,48,Canada,2024-12-21,['Thriller'],free
+u030,ibrandt@example.net,56,Germany,2025-02-18,"['Thriller', 'Horror', 'Sci-Fi']",free
+u031,raymond57@example.net,39,Canada,2024-11-23,['Thriller'],free
+u032,jeffreymorgan@example.net,54,Germany,2024-12-30,"['Drama', 'Horror']",premium
+u033,adrianzimmerman@example.org,69,Canada,2024-09-02,"['Sci-Fi', 'Drama']",free
+u034,heathchad@example.org,52,India,2024-09-20,['Comedy'],premium
+u035,ilewis@example.net,68,India,2025-05-19,"['Horror', 'Sci-Fi', 'Comedy']",premium
+u036,esanchez@example.com,51,USA,2024-08-19,"['Thriller', 'Horror']",premium
+u037,hopkinsmichael@example.com,29,Japan,2024-11-28,"['Comedy', 'Sci-Fi', 'Action']",premium
+u038,nuneztracey@example.org,58,UK,2024-07-03,"['Romance', 'Thriller']",premium
+u039,lauren13@example.org,23,USA,2024-08-19,['Drama'],premium
+u040,ltaylor@example.com,17,Japan,2024-11-27,"['Sci-Fi', 'Thriller', 'Horror']",free
+u041,ramosmichelle@example.net,20,UK,2024-07-16,"['Drama', 'Sci-Fi', 'Horror']",free
+u042,novaksara@example.org,37,India,2024-08-10,"['Sci-Fi', 'Action', 'Romance']",free
+u043,zolson@example.org,50,USA,2024-08-10,"['Thriller', 'Horror', 'Romance']",free
+u044,gallowayjoseph@example.com,66,Brazil,2024-09-23,"['Sci-Fi', 'Drama']",free
+u045,smoore@example.org,58,Brazil,2025-05-31,"['Romance', 'Horror']",premium
+u046,adkinsbrian@example.net,62,India,2024-12-02,"['Comedy', 'Horror', 'Drama']",free
+u047,brianromero@example.org,41,UK,2024-07-06,"['Horror', 'Drama']",free
+u048,leonardjoe@example.org,28,USA,2025-05-21,"['Romance', 'Sci-Fi', 'Horror']",free
+u049,bethwilliams@example.org,33,Brazil,2024-11-11,['Horror'],free
+u050,sarah35@example.org,44,Canada,2024-09-16,"['Drama', 'Horror', 'Thriller']",free
+u051,emilyevans@example.com,21,Canada,2025-05-17,['Sci-Fi'],premium
+u052,smithchristine@example.net,47,Brazil,2025-06-10,['Horror'],premium
+u053,medinawilliam@example.org,19,USA,2025-05-18,"['Drama', 'Romance']",premium
+u054,suarezmike@example.org,66,Canada,2024-11-18,"['Action', 'Romance']",premium
+u055,cheryl80@example.net,25,USA,2025-04-06,"['Sci-Fi', 'Drama']",free
+u056,sarah12@example.com,63,Germany,2024-07-23,['Drama'],premium
+u057,newtoneric@example.com,48,Canada,2025-01-18,"['Sci-Fi', 'Drama', 'Thriller']",free
+u058,james48@example.com,70,USA,2024-09-10,['Thriller'],free
+u059,davisrodney@example.com,59,Canada,2024-06-27,['Romance'],free
+u060,kellie42@example.net,52,USA,2024-11-19,"['Thriller', 'Drama', 'Horror']",free
+u061,hhoffman@example.org,42,UK,2025-05-22,"['Thriller', 'Horror', 'Action']",premium
+u062,amydavenport@example.net,29,UK,2024-12-30,"['Action', 'Sci-Fi', 'Horror']",premium
+u063,tanderson@example.com,24,UK,2025-05-06,"['Action', 'Romance', 'Horror']",free
+u064,nolanjason@example.org,16,Brazil,2025-02-10,"['Thriller', 'Drama', 'Comedy']",free
+u065,kimberly69@example.net,48,Germany,2024-08-06,['Action'],free
+u066,michellecherry@example.org,31,Germany,2025-04-29,"['Sci-Fi', 'Romance']",premium
+u067,whitesandra@example.com,55,Canada,2025-03-31,"['Thriller', 'Drama', 'Horror']",premium
+u068,josephcobb@example.org,58,India,2024-10-29,['Action'],free
+u069,garrisonjeffrey@example.com,22,UK,2024-10-16,"['Sci-Fi', 'Action', 'Comedy']",free
+u070,jeffreykeller@example.com,61,Germany,2024-10-09,['Comedy'],premium
+u071,rasmussenjoshua@example.net,48,Brazil,2024-12-14,"['Horror', 'Drama']",free
+u072,sheila14@example.org,56,Brazil,2025-01-09,"['Drama', 'Horror']",premium
+u073,benjamin96@example.com,65,USA,2025-03-04,"['Action', 'Sci-Fi', 'Romance']",premium
+u074,samuel81@example.com,51,India,2025-05-06,['Drama'],free
+u075,jonathanfletcher@example.org,50,India,2024-12-18,"['Thriller', 'Horror']",free
+u076,michaeljones@example.net,43,USA,2025-05-14,['Action'],premium
+u077,elizabeth14@example.net,66,Canada,2024-10-02,['Action'],free
+u078,snguyen@example.com,59,USA,2024-12-30,"['Drama', 'Action', 'Thriller']",premium
+u079,robertbentley@example.net,55,UK,2025-03-11,['Sci-Fi'],free
+u080,christinaturner@example.net,67,Canada,2025-04-12,['Romance'],free
+u081,justin69@example.net,27,UK,2025-02-05,"['Horror', 'Romance']",free
+u082,rramos@example.org,33,USA,2024-12-15,"['Drama', 'Romance', 'Horror']",premium
+u083,donnacampbell@example.net,30,USA,2025-01-28,"['Action', 'Horror']",free
+u084,clarence34@example.org,30,India,2025-04-02,"['Sci-Fi', 'Romance', 'Action']",premium
+u085,andrewsanchez@example.com,20,Canada,2025-01-20,"['Action', 'Comedy']",premium
+u086,gibsonolivia@example.net,59,Canada,2024-08-21,"['Action', 'Drama', 'Comedy']",premium
+u087,psnyder@example.org,27,Japan,2025-02-06,"['Drama', 'Horror']",premium
+u088,staffordmichelle@example.org,38,UK,2025-03-22,"['Romance', 'Thriller']",free
+u089,gregoryrubio@example.net,40,Japan,2024-11-28,['Action'],free
+u090,samanthamartinez@example.org,61,Brazil,2025-03-31,['Thriller'],free
+u091,stephanie79@example.net,39,Brazil,2025-05-03,['Comedy'],premium
+u092,jrivas@example.com,55,Germany,2025-05-05,"['Horror', 'Drama', 'Action']",premium
+u093,wcole@example.org,58,Brazil,2025-04-14,"['Romance', 'Comedy']",premium
+u094,katie87@example.net,51,USA,2024-09-06,['Romance'],premium
+u095,sjones@example.org,59,UK,2024-09-18,['Thriller'],premium
+u096,patricia12@example.org,41,Japan,2024-09-03,['Action'],premium
+u097,jasminebrown@example.com,29,Brazil,2024-10-10,"['Thriller', 'Comedy', 'Action']",premium
+u098,nperry@example.com,44,Brazil,2024-10-31,"['Sci-Fi', 'Thriller', 'Romance']",free
+u099,gateskathy@example.com,58,India,2024-12-02,"['Thriller', 'Comedy']",premium

@@ -34,6 +34,11 @@ def activitypage(events_df, shows_df):
             )
         ])
         
+        # Calculate dynamic y-axis range with padding
+        y_min, y_max = min(hourly_data), max(hourly_data)
+        y_range = y_max - y_min
+        padding = max(y_range * 0.1, 100)  # 10% padding or minimum 100 users
+        
         fig1.update_layout(
             title="Predicted Hourly User Activity",
             xaxis_title="Hour of Day",
@@ -42,6 +47,9 @@ def activitypage(events_df, shows_df):
                 tickmode='linear', 
                 dtick=1,
                 tickangle=0  # Keep x-axis labels horizontal
+            ),
+            yaxis=dict(
+                range=[max(0, y_min - padding), y_max + padding]
             ),
             showlegend=False
         )
@@ -54,18 +62,27 @@ def activitypage(events_df, shows_df):
         
         fig2 = go.Figure(data=[
             go.Scatter(
-                x=[item[0] for item in watchtime_data],
-                y=[item[1] for item in watchtime_data],
-                mode='lines+markers',
-                line=dict(color='red'),
-                name='Average Watchtime'
+            x=[item[0] for item in watchtime_data],
+            y=[item[1] for item in watchtime_data],
+            mode='lines+markers',
+            line=dict(color='red'),
+            name='Average Watchtime'
             )
         ])
+        
+        # Calculate dynamic y-axis range with padding
+        y_values = [item[1] for item in watchtime_data]
+        y_min, y_max = min(y_values), max(y_values)
+        y_range = y_max - y_min
+        padding = max(y_range * 0.2, 0.2)  # 20% padding or minimum 5 minutes
         
         fig2.update_layout(
             title="7-Day Average Watchtime",
             xaxis_title="Date",
             yaxis_title="Time (minutes)",
+            yaxis=dict(
+            range=[y_min - padding, y_max + padding]
+            ),
             showlegend=False
         )
         

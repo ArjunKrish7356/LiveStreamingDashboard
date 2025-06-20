@@ -8,7 +8,7 @@ def get_top_watched_shows_last_week(event_df: pd.DataFrame, shows_df: pd.DataFra
     Returns a list of the top 10 watched shows from the last 7 days, with show name and genre.
 
     Args:
-        event_df (pd.DataFrame): DataFrame with event data, including 'login_time' and 'content_watched'.
+        event_df (pd.DataFrame): DataFrame with event data, including 'login_time' and 'content_watched' (single show IDs).
         shows_df (pd.DataFrame): DataFrame with show metadata including 'show_id', 'show_name', and 'genre'.
 
     Returns:
@@ -25,16 +25,8 @@ def get_top_watched_shows_last_week(event_df: pd.DataFrame, shows_df: pd.DataFra
 
     # Count how often each show appears
     show_counts = defaultdict(int)
-    for shows in recent_events['content_watched']:
-        if isinstance(shows, str):
-            try:
-                show_list = eval(shows)
-            except Exception:
-                continue
-        else:
-            show_list = shows
-
-        for show_id in show_list:
+    for show_id in recent_events['content_watched']:
+        if pd.notna(show_id):  # Skip NaN values
             show_counts[show_id] += 1
 
     # Sort show_ids by view count and get top 10
