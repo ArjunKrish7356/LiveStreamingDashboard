@@ -6,6 +6,8 @@ import joblib
 from ui.churnpage import churnpage
 from ui.activitypage import activitypage
 
+from features.show_time import predicted_hourly_user_activity
+
 @st.cache_data
 def load_data():
     """Load and cache the datasets"""
@@ -37,3 +39,4 @@ def main():
     
 if __name__ == '__main__':
     main()
+    
