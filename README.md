@@ -3,9 +3,7 @@
 An adaptive engagement intelligence platform for live streaming. This project provides a comprehensive solution for live streaming platforms to analyze viewer behavior, predict engagement, and optimize the streaming experience in real-time.
 
 <!-- Placeholder for a project demo video -->
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/746fdcfb-96d2-4aac-81db-71e2b99be5e1" alt="Project Demo Video">
-</div>
+https://github.com/user-attachments/assets/746fdcfb-96d2-4aac-81db-71e2b99be5e1
 
 ## Table of Contents
 - [Features](#features)
