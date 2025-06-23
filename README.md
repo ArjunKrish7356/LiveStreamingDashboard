@@ -2,48 +2,113 @@
 
 An adaptive engagement intelligence platform for live streaming. This project provides a comprehensive solution for live streaming platforms to analyze viewer behavior, predict engagement, and optimize the streaming experience in real-time.
 
-(I will add a video of its working here)
+<!-- Placeholder for a project demo video -->
+<div align="center">
+  <p><em>(I will add a video of its working here)</em></p>
+</div>
 
-## What it does:
-- A FastAPI server to log event-data and user-data.
-- A 2-page frontend created with Streamlit.
-- The first page shows churn statistics calculated using a pipeline of two advanced ML models. The first model, a logistic regression model, predicts whether a user will churn. The second, a RandomForest model, determines the reason for the churn. This page displays the percentage of users likely to churn, a chart showing the ratio of users likely to churn for each reason, and a table with user IDs and their churn reasons.
-- The second page displays user activity statistics, including the average user watch time per day and a table of the top-viewed shows in the past week. It also uses a RandomForest ML model to predict the number of users expected each hour for the next 24 hours by analyzing the past week's data.
+## Table of Contents
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+  - [Running the Backend](#running-the-backend)
+  - [Running the Frontend](#running-the-frontend)
+- [API Endpoints](#api-endpoints)
+  - [Register User](#register-user)
+  - [Log Event](#log-event)
 
-## Folder Organization
-- **data/**: Contains `events.csv` to store event data, `users.csv` to store user data, and `shows.csv` to store show data.
-- **features/**: Contains functions for calculations: `average_watchtime.py`, `churn.py`, `show_time.py`, and `top_shows.py`.
-- **models/**: Contains models to predict churn, churn reason, and the number of people that might come in the coming hours.
-- **ui/**: Contains the UI for the activity and churn pages, built with Streamlit.
-- **main.py**: Combines the UI, data, features, and models to make everything work.
-- **server.py**: Contains the FastAPI code to run the backend for logging events and user data.
+## Features
+- **FastAPI Backend**: A robust server to log event and user data seamlessly.
+- **Streamlit Frontend**: A two-page interactive dashboard for data visualization and analysis.
+- **Churn Prediction**:
+    - Utilizes a machine learning pipeline with Logistic Regression to predict user churn.
+    - Employs a RandomForest model to identify the underlying reasons for churn.
+    - Visualizes churn probability, reason distribution, and user-specific churn insights.
+- **User Activity Analytics**:
+    - Tracks and displays average user watch time per day.
+    - Presents a weekly summary of top-viewed shows.
+    - Forecasts hourly user traffic for the next 24 hours using a RandomForest model based on the past week's data.
 
-## How to start
-After cloning the repo, first run `initialisation.sh`. It will set up the required dependencies and the virtual environment.
+## Project Structure
+The project is organized into the following directories:
+- `main.py`: The entry point for the Streamlit application, integrating all components.
+- `server.py`: The FastAPI backend server for handling API requests.
+- `data/`: Stores the datasets, including `users.csv`, `events.csv`, and `shows.csv`.
+- `features/`: Contains feature engineering scripts (`average_watchtime.py`, `churn.py`, `show_time.py`, `top_shows.py`).
+- `models/`: Contains serialized machine learning models for prediction.
+- `ui/`: Holds the Streamlit components for the `activitypage.py` and `churnpage.py`.
 
-## To run UI
-Run `streamlit run main.py` to start the frontend. It will be available at `http://localhost:8501`.
+## Getting Started
 
-## To run backend
-Type in a new terminal `fastapi run server.py`.
+### Prerequisites
+- Python 3.13.3
+- Git
 
-### Endpoints
-- **`/register-user`**: Registers a new user.
-  - **Input structure**:
-    - `user_id`: string
-    - `email`: string
-    - `age`: integer
-    - `country`: string
-    - `registration_date`: string
-    - `preferred_genre`: string
-    - `subscription_type`: string
-- **`/log-event`**: Logs an event.
-  - **Input structure**:
-    - `user_id`: string
-    - `login_time`: datetime
-    - `content_watched`: string
-    - `genres_watched`: string
-    - `total_watch_time`: float
-    - `num_pauses`: integer
-    - `buffer_events`: integer
-    - `was_recommended`: boolean
+### Installation
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd LiveStreamingDashboard
+   ```
+2. **Run the initialization script:**
+   This script will create a virtual environment and install the required dependencies.
+   ```bash
+   ./initialisation.sh
+   ```
+
+## Usage
+The application consists of a backend server and a frontend dashboard, which must be run in separate terminals.
+
+### Running the Backend
+To start the FastAPI server, run the following command:
+```bash
+fastapi run server.py
+```
+The backend API will be available at `http://127.0.0.1:8000`.
+
+### Running the Frontend
+To launch the Streamlit dashboard, run:
+```bash
+streamlit run main.py
+```
+The frontend will be available at `http://localhost:8501`.
+
+## API Endpoints
+
+### Register User
+- **Endpoint**: `/register-user`
+- **Method**: `POST`
+- **Description**: Registers a new user in the system.
+- **Payload**:
+  ```json
+  {
+    "user_id": "string",
+    "email": "string",
+    "age": "integer",
+    "country": "string",
+    "registration_date": "string",
+    "preferred_genre": "string",
+    "subscription_type": "string"
+  }
+  ```
+
+### Log Event
+- **Endpoint**: `/log-event`
+- **Method**: `POST`
+- **Description**: Logs a new user event.
+- **Payload**:
+  ```json
+  {
+    "user_id": "string",
+    "login_time": "datetime",
+    "content_watched": "string",
+    "genres_watched": "string",
+    "total_watch_time": "float",
+    "num_pauses": "integer",
+    "buffer_events": "integer",
+    "was_recommended": "boolean"
+  }
+  ```
