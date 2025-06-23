@@ -5,7 +5,7 @@ from features.show_time import predicted_hourly_user_activity
 from features.average_watchtime import average_watchtime_for_7_days
 from features.top_shows import get_top_watched_shows_last_week
 
-def activitypage(events_df, shows_df):
+def activitypage(events_df, shows_df, timing_model):
     """
     This page will have 3 components
      - A graph that shows how many people will arrive in the 24 hours. Each hour will have its own vertical line. Use color green for all. This will be in the top left corner
@@ -23,7 +23,7 @@ def activitypage(events_df, shows_df):
     
     with top_left:
         # Top left: Hourly prediction graph
-        hourly_data = predicted_hourly_user_activity(events_df)
+        hourly_data = predicted_hourly_user_activity(events_df, timing_model)
         
         fig1 = go.Figure(data=[
             go.Bar(
@@ -100,7 +100,6 @@ def activitypage(events_df, shows_df):
         # Format data for display
         show_data = []
         for show in top_shows:
-            print(show)
             show_data.append({
                 "Show Name": show[0],
                 "Genres": ", ".join(show[1])

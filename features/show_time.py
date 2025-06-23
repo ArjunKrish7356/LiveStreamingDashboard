@@ -4,19 +4,17 @@ from typing import List
 from datetime import timedelta
 from datetime import datetime, timedelta
 
-def predicted_hourly_user_activity(events_df: pd.DataFrame) -> List[int]:
+def predicted_hourly_user_activity(events_df: pd.DataFrame, model) -> List[int]:
     """
     Predict hourly user activity using a trained ML model (.pkl).
 
     Args:
         events_df (pd.DataFrame): Contains 'login_time'
+        model: Model to predict the timings
 
     Returns:
         List[int]: Predicted user logins for each hour (0–23)
     """
-
-    # Load trained model
-    model = joblib.load('models/user_activity_model.pkl')
 
     # Predict for "today" (or next day), across all 24 hours
     today = datetime.now()

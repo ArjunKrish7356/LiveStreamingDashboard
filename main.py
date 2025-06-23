@@ -14,22 +14,24 @@ def load_data():
     shows_df = pd.read_csv('data/shows.csv')
     events_df = pd.read_csv('data/events.csv')
     users_df = pd.read_csv('data/users.csv')
-    with open('models/churn_model_v2.pkl', 'rb') as f:
+    with open('models/churn_model.pkl', 'rb') as f:
         churn_model = joblib.load(f)
     with open('models/churn_reason.pkl', 'rb') as f:
         churn_reason_model = joblib.load(f)
-    return shows_df, events_df, users_df, churn_model, churn_reason_model
+    with open('models/user_activity_model.pkl','rb') as f:
+        timing_model = joblib.load(f)
+    return shows_df, events_df, users_df, churn_model, churn_reason_model, timing_model
 
 def main():
     """Main application function"""
     # Load cached data
-    shows_df, events_df, users_df, churn_model, churn_reason_model = load_data()
+    shows_df, events_df, users_df, churn_model, churn_reason_model, timing_model = load_data()
     
     def churn_wrapper():
         return churnpage(events_df, users_df, churn_model, churn_reason_model)
     
     def activity_wrapper():
-        return activitypage(events_df, shows_df)
+        return activitypage(events_df, shows_df, timing_model)
     
     churn_page = st.Page(churn_wrapper, title='Churn Stats', url_path='churn')
     activity_page = st.Page(activity_wrapper, title='User Activity', url_path='activity')
