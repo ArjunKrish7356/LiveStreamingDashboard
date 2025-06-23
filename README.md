@@ -50,7 +50,7 @@ The project is organized into the following directories:
 ### Installation
 1. **Clone the repository:**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/ArjunKrish7356/LiveStreamingDashboard.git
    cd LiveStreamingDashboard
    ```
 2. **Run the initialization script:**
