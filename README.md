@@ -4,7 +4,7 @@ An adaptive engagement intelligence platform for live streaming. This project pr
 
 <!-- Placeholder for a project demo video -->
 <div align="center">
-  https://github.com/user-attachments/assets/746fdcfb-96d2-4aac-81db-71e2b99be5e1
+  <img src="https://github.com/user-attachments/assets/746fdcfb-96d2-4aac-81db-71e2b99be5e1" alt="Project Demo Video">
 </div>
 
 ## Table of Contents
