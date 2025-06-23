@@ -42,7 +42,7 @@ def total_and_categorial_churn(event_df, users_df, churn_model, churn_reason_mod
 
     @st.cache_data
     def get_churn_predictions(prediction_features):
-        return churn_model.predict(prediction_features.values)
+        return churn_model.predict(prediction_features)
 
     churn_predictions = get_churn_predictions(prediction_features)
 
@@ -59,7 +59,7 @@ def total_and_categorial_churn(event_df, users_df, churn_model, churn_reason_mod
             churned_users.append((user_id, churn_reason))
             churn_count += 1
 
-    churn_percentage = round(churn_count / len(prediction_features), 2) if len(prediction_features) > 0 else 0.0
+    churn_percentage = churn_count / len(prediction_features) if len(prediction_features) > 0 else 0.0
 
     return (int(churn_percentage*100))/100, churned_users
 

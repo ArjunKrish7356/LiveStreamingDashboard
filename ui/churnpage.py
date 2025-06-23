@@ -82,7 +82,7 @@ def churnpage(event_df, users_df, churn_model, churn_reason_model):
         }
 
    # Data for the table at bottom. The keys ('User ID, Reason..etc) are column names
-    mock_users_data = {
+    bottom_table_data = {
         'User ID': [user[0] for user in user_data],
         'Reason': [user[1] for user in user_data]
     }
@@ -91,12 +91,19 @@ def churnpage(event_df, users_df, churn_model, churn_reason_model):
     with col1:
         st.markdown('<h3 style="color: black;">Overall Churn Rate</h3>', unsafe_allow_html=True)
         
+        # Get total user count for hover display
+        total_users = len(event_df['user_id'].unique()) if not event_df.empty else 1
+        at_risk_count = int(total_churn_percent * total_users)
+        safe_count = total_users - at_risk_count
+        
         # Create donut chart
         fig_donut = go.Figure(data=[go.Pie(
             labels=['At Risk', 'Safe'], 
             values=[total_churn_percent * 100, 100 - (total_churn_percent * 100)],
             hole=.6,
-            marker_colors=['#ff6b6b', '#51cf66']
+            marker_colors=['#ff6b6b', '#51cf66'],
+            hovertemplate='<b>%{label}</b><br>Count: %{customdata}<br>Percentage: %{percent}<extra></extra>',
+            customdata=[at_risk_count, safe_count]
         )])
         
         # Add percentage text in the center
@@ -156,7 +163,7 @@ def churnpage(event_df, users_df, churn_model, churn_reason_model):
     st.markdown('<h3 style="color: black; margin-top: 1rem;">Users at Risk</h3>', unsafe_allow_html=True)
     
     # Convert mock data to DataFrame
-    df_users = pd.DataFrame(mock_users_data)
+    df_users = pd.DataFrame(bottom_table_data)
     
     # Display table with remaining height
     st.dataframe(

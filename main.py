@@ -12,7 +12,7 @@ def load_data():
     shows_df = pd.read_csv('data/shows.csv')
     events_df = pd.read_csv('data/events.csv')
     users_df = pd.read_csv('data/users.csv')
-    with open('models/churn_model.pkl', 'rb') as f:
+    with open('models/churn_model_v2.pkl', 'rb') as f:
         churn_model = joblib.load(f)
     with open('models/churn_reason.pkl', 'rb') as f:
         churn_reason_model = joblib.load(f)
